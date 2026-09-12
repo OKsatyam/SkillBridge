@@ -11,7 +11,7 @@ export const register = async (req, res, next) => {
         res.status(201).json(
             {
                 success: true,
-                data:{user:{id: user._id, name: user.name, email: user.email, roles: user.roles}, accessToken},
+                data:{user:{_id: user._id, name: user.name, email: user.email, roles: user.roles}, accessToken},
                 message: 'User registered successfully'
             }
         );
@@ -31,7 +31,7 @@ export const login = (req, res, next) => {
         }
         const {accessToken, refreshToken} = issueTokens(user);
         setRefreshTokenCookie(res, refreshToken);
-        res.json({success: true, data: {user: {id: user._id, name: user.name, email: user.email, roles: user.roles}, accessToken}, message: 'Logged in successfully' });
+        res.json({success: true, data: {user: {_id: user._id, name: user.name, email: user.email, roles: user.roles}, accessToken}, message: 'Logged in successfully' });
     })(req, res, next);
 };
 
